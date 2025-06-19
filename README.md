@@ -1,206 +1,224 @@
-# AI网站搜索分析工具
+# AI 网站自动化搜索与分析工具
 
-这是一个基于 Python + Playwright 的自动化工具，用于访问多个AI网站、搜索关键词并分析结果。
+一个基于 Python 和 Playwright 的自动化工具，支持访问多个 AI 网站，搜索关键词并保存联网搜索结果，然后用 AI 分析这些网页中关键词的频度、相关性、情绪和权威性。
 
-## 功能特点
+## 🚀 主要功能
 
-- 🚀 **自动化浏览器操作**: 使用 Playwright 自动访问20个主流AI网站
-- 🔍 **智能搜索**: 自动在各大AI网站搜索指定关键词
-- 📊 **数据分析**: 分析关键词频度、相关性、情绪和权威性
-- 📈 **详细报告**: 生成包含多种指标的分析报告
-- 💾 **本地存储**: 所有结果保存到本地文件，便于后续分析
+### 1. 多网站搜索
+- **DeepSeek** - 支持联网搜索
+- **ChatGPT** - 支持聊天搜索
+- **其他 AI 网站** - 可扩展支持更多网站
 
-## 支持的AI网站
+### 2. 登录态复用
+- 支持手动登录并保存登录状态
+- 自动复用登录状态，无需重复登录
+- 支持 DeepSeek 和 ChatGPT 的登录态管理
 
-1. OpenAI
-2. Anthropic
-3. Google AI
-4. Microsoft AI
-5. Meta AI
-6. DeepMind
-7. Hugging Face
-8. Stability AI
-9. Cohere
-10. Claude
-11. Perplexity
-12. You.com
-13. Bard
-14. ChatGPT
-15. Bing Chat
-16. Midjourney
-17. DALL-E
-18. Runway
-19. ElevenLabs
-20. Replicate
+### 3. 智能内容获取
+- 自动识别聊天输入框和回复内容
+- 支持多种页面结构的选择器
+- 智能等待和重试机制
 
-## 安装要求
+### 4. 数据分析
+- 关键词频度分析
+- 内容相关性评估
+- 情绪分析
+- 权威性评估
 
-### 系统要求
+## 📁 项目结构
+
+```
+script/
+├── main.py                 # 主程序入口
+├── web_scraper.py          # 网页抓取核心模块
+├── ai_analyzer.py          # AI 分析模块
+├── login_manager.py        # 登录态管理工具
+├── chat_with_login.py      # 支持登录态的聊天搜索
+├── deepseek_web_search.py  # DeepSeek 联网搜索
+├── config.py               # 配置文件
+├── requirements.txt        # 依赖包列表
+├── setup.py               # 安装脚本
+├── LOGIN_GUIDE.md         # 登录态复用使用指南
+├── data/                  # 数据存储目录
+└── test_*.py              # 各种测试脚本
+```
+
+## 🛠️ 安装与配置
+
+### 1. 环境要求
 - Python 3.8+
 - macOS/Linux/Windows
 
-### 安装步骤
-
-1. **克隆项目**
+### 2. 安装依赖
 ```bash
-git clone <repository-url>
-cd ai-search-analyzer
-```
-
-2. **安装依赖**
-```bash
+# 安装 Python 依赖
 pip install -r requirements.txt
+
+# 安装 Playwright 浏览器
+python -m playwright install
 ```
 
-3. **安装 Playwright 浏览器**
+### 3. 快速安装
 ```bash
-playwright install chromium
+python setup.py
 ```
 
-4. **配置环境变量（可选）**
+## 📖 使用指南
+
+### 1. 登录态管理
+
+#### 首次使用 - 手动登录
 ```bash
-# 创建 .env 文件
-echo "OPENAI_API_KEY=your_openai_api_key_here" > .env
+python3 login_manager.py
 ```
+选择选项 1 进行手动登录，程序会：
+- 打开浏览器窗口
+- 访问目标网站
+- 等待你手动完成登录
+- 自动保存登录状态
 
-## 使用方法
-
-### 快速开始
-
-运行主程序：
+#### 验证登录状态
 ```bash
-python main.py
+python3 login_manager.py
 ```
+选择选项 3 验证登录状态是否有效。
 
-### 分步执行
+### 2. 聊天搜索
 
-1. **仅执行网页搜索**：
+#### DeepSeek 联网搜索
 ```bash
-python web_scraper.py
+python3 deepseek_web_search.py
 ```
+输入关键词，程序会：
+- 自动使用保存的登录状态
+- 访问 DeepSeek 聊天页面
+- 发送搜索请求
+- 获取 AI 回复
+- 保存结果到 JSON 文件
 
-2. **仅执行结果分析**：
+#### 通用聊天搜索
 ```bash
-python ai_analyzer.py
+python3 chat_with_login.py
 ```
+支持选择不同的 AI 平台进行聊天搜索。
 
-### 程序菜单选项
-
-1. **执行完整流程（搜索 + 分析）**: 自动完成搜索和分析
-2. **仅执行网页搜索**: 只进行网站搜索和数据收集
-3. **仅执行结果分析**: 分析已有的搜索结果
-4. **查看历史结果**: 查看之前保存的结果和报告
-5. **退出**: 退出程序
-
-## 输出文件
-
-程序会在 `data/` 目录下生成以下文件：
-
-- `search_results_[关键词]_[时间戳].json`: 原始搜索结果
-- `analysis_results_[关键词]_[时间戳].json`: 详细分析结果
-- `summary_report_[关键词]_[时间戳].txt`: 摘要报告
-- `scraping_logs.txt`: 操作日志
-
-## 分析指标
-
-### 1. 关键词频度分析
-- 总出现次数统计
-- 各网站关键词出现频度排名
-- 标题和内容中的关键词分布
-
-### 2. 相关性分析
-- 基于关键词匹配的相关性评分
-- 标题权重（60%）+ 内容权重（40%）
-- 0-1 分数范围
-
-### 3. 情绪分析
-- 使用 TextBlob 进行情绪分析
-- 积极/消极/中性情绪分类
-- 情绪极性和主观性评分
-
-### 4. 权威性分析
-- 基于网站知名度的权威性评分
-- 内容长度和质量评估
-- 链接和图片完整性检查
-
-### 5. 综合评分
-- 相关性（40%）+ 情绪（20%）+ 权威性（40%）
-- 自动排序和推荐
-
-## 配置说明
-
-### 修改网站配置
-编辑 `config.py` 文件中的 `AI_WEBSITES` 列表来添加或修改目标网站。
-
-### 调整搜索参数
-在 `config.py` 中修改 `SEARCH_CONFIG`：
-- `max_results_per_site`: 每个网站最多获取的结果数
-- `wait_time`: 页面加载等待时间
-- `timeout`: 超时时间
-- `headless`: 是否无头模式
-
-## 注意事项
-
-1. **反爬虫机制**: 程序已内置延迟和用户代理设置，但仍需遵守网站的robots.txt
-2. **网络连接**: 确保网络连接稳定，某些网站可能需要VPN访问
-3. **浏览器兼容性**: 建议使用最新版本的Chrome浏览器
-4. **数据存储**: 大量数据会占用本地存储空间，定期清理旧文件
-
-## 故障排除
-
-### 常见问题
-
-1. **Playwright 安装失败**
+### 3. 网页搜索与分析
 ```bash
-# 重新安装 Playwright
-pip uninstall playwright
-pip install playwright
-playwright install
+python3 main.py
+```
+执行完整的搜索和分析流程。
+
+## 🔧 配置说明
+
+### 网站配置
+在 `config.py` 中配置要搜索的网站：
+
+```python
+WEBSITES = [
+    {
+        'name': 'DeepSeek',
+        'url': 'https://chat.deepseek.com',
+        'type': 'chat'
+    },
+    {
+        'name': 'ChatGPT', 
+        'url': 'https://chat.openai.com',
+        'type': 'chat'
+    }
+]
 ```
 
-2. **网站访问失败**
-- 检查网络连接
-- 确认网站是否可访问
-- 尝试使用VPN
+### 搜索关键词
+在 `config.py` 中配置搜索关键词：
 
-3. **分析结果为空**
-- 检查关键词是否正确
-- 确认搜索结果文件存在
-- 查看日志文件了解详细错误
-
-### 日志查看
-程序运行时会生成详细的日志文件 `scraping_logs.txt`，遇到问题时请查看此文件。
-
-## 开发说明
-
-### 项目结构
-```
-ai-search-analyzer/
-├── main.py              # 主程序入口
-├── web_scraper.py       # 网页抓取模块
-├── ai_analyzer.py       # AI分析模块
-├── config.py            # 配置文件
-├── requirements.txt     # 依赖包列表
-├── README.md           # 项目说明
-└── data/               # 数据输出目录
+```python
+SEARCH_KEYWORDS = [
+    '人工智能',
+    '机器学习',
+    '深度学习'
+]
 ```
 
-### 扩展功能
-- 添加新的AI网站支持
-- 自定义分析算法
-- 集成更多AI分析服务
-- 添加数据可视化功能
+## 📊 数据格式
 
-## 许可证
+搜索结果保存为 JSON 格式：
+
+```json
+{
+    "website": "DeepSeek",
+    "website_url": "https://chat.deepseek.com",
+    "query": "人工智能",
+    "title": "DeepSeek 回复",
+    "content": "AI 回复内容...",
+    "timestamp": "2025-06-19T17:30:00",
+    "success": true
+}
+```
+
+## 🧪 测试
+
+### 浏览器测试
+```bash
+python3 test_browser_simple.py
+```
+
+### 登录态测试
+```bash
+python3 login_manager.py
+```
+
+### 聊天功能测试
+```bash
+python3 chat_with_login.py
+```
+
+## 🔒 安全注意事项
+
+1. **登录状态文件** - `login_state.json` 包含敏感信息，已添加到 `.gitignore`
+2. **个人数据** - 不要将包含个人信息的文件提交到版本控制
+3. **API 密钥** - 如有使用 API，请妥善保管密钥
+
+## 🐛 故障排除
+
+### 浏览器启动失败
+```bash
+# 重新安装 Playwright 浏览器
+python -m playwright install
+```
+
+### 登录状态失效
+```bash
+# 重新登录
+python3 login_manager.py
+```
+
+### 页面元素识别失败
+- 网站可能更新了页面结构
+- 运行调试脚本分析页面结构
+- 更新选择器配置
+
+## 📝 更新日志
+
+### v2.0.0 (2025-06-19)
+- ✨ 添加登录态复用功能
+- ✨ 支持 DeepSeek 联网搜索
+- ✨ 支持 ChatGPT 聊天搜索
+- 🔧 优化浏览器启动参数
+- 📚 添加详细使用指南
+
+### v1.0.0 (2025-06-18)
+- 🎉 初始版本发布
+- ✨ 基础网页抓取功能
+- ✨ AI 内容分析功能
+
+## 🤝 贡献
+
+欢迎提交 Issue 和 Pull Request！
+
+## 📄 许可证
 
 MIT License
 
-## 贡献
+## 📞 联系方式
 
-欢迎提交 Issue 和 Pull Request 来改进这个项目！
-
-## 联系方式
-
-如有问题或建议，请通过以下方式联系：
-- 提交 GitHub Issue
-- 发送邮件至：[your-email@example.com] 
+如有问题，请提交 GitHub Issue。 
