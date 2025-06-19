@@ -94,16 +94,20 @@ AI_WEBSITES = [
     {
         "name": "ChatGPT",
         "url": "https://chat.openai.com",
-        "search_url": "https://chat.openai.com/search?q={query}",
-        "search_selector": "input[name='q'], input[type='search'], .search-input",
-        "results_selector": ".search-result, .result-item, article, .content-item"
+        "search_url": "https://chat.openai.com",
+        "search_selector": "textarea[data-id='root'], textarea[placeholder*='Message'], .chat-input, textarea",
+        "results_selector": ".markdown, .prose, .message, .response, [data-message-author-role='assistant']",
+        "is_chat": True,  # 标记为聊天形式
+        "chat_prompt": "请搜索并回答关于以下关键词的信息：{query}"
     },
     {
         "name": "Bing Chat",
         "url": "https://www.bing.com/chat",
-        "search_url": "https://www.bing.com/chat/search?q={query}",
-        "search_selector": "input[name='q'], input[type='search'], .search-input",
-        "results_selector": ".search-result, .result-item, article, .content-item"
+        "search_url": "https://www.bing.com/chat",
+        "search_selector": "textarea[placeholder*='Ask'], .chat-input, textarea",
+        "results_selector": ".response, .message, .answer, [data-message-author-role='assistant']",
+        "is_chat": True,
+        "chat_prompt": "请搜索并回答关于以下关键词的信息：{query}"
     },
     {
         "name": "Midjourney",
@@ -148,7 +152,9 @@ SEARCH_CONFIG = {
     "wait_time": 3,  # 页面加载等待时间（秒）
     "timeout": 30,  # 超时时间（秒）
     "headless": False,  # 是否无头模式
-    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "chat_wait_time": 10,  # 聊天回复等待时间（秒）
+    "max_chat_attempts": 3  # 最大聊天尝试次数
 }
 
 # 数据存储配置

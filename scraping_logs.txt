@@ -1,0 +1,63 @@
+2025-06-19 09:48:07,631 - ERROR - 浏览器初始化失败: Target page, context or browser has been closed
+Browser logs:
+
+<launching> /Users/timon/Library/Caches/ms-playwright/chromium-1091/chrome-mac/Chromium.app/Contents/MacOS/Chromium --disable-field-trial-config --disable-background-networking --enable-features=NetworkService,NetworkServiceInProcess --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=ImprovedCookieControls,LazyFrameLoading,GlobalMediaControls,DestroyProfileOnBrowserClose,MediaRouter,DialMediaRouteProvider,AcceptCHFrame,AutoExpandDetailsElement,CertificateTransparencyComponentUpdater,AvoidUnnecessaryBeforeUnloadCheckSync,Translate,HttpsUpgrades --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --enable-automation --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --enable-use-zoom-for-dsf=false --no-sandbox --no-sandbox --disable-dev-shm-usage --user-data-dir=/var/folders/33/mkkdmtsd3yxbmprmqbndnv7c0000gn/T/playwright_chromiumdev_profile-5w22Rj --remote-debugging-pipe --no-startup-window
+<launched> pid=48232
+[pid=48232][err] [48232:259:0619/094807.001857:ERROR:policy_logger.cc(156)] :components/enterprise/browser/controller/chrome_browser_cloud_management_controller.cc(161) Cloud management controller initialization aborted as CBCM is not enabled. Please use the `--enable-chrome-browser-cloud-management` command line flag to enable it if you are not using the official Google Chrome build.
+[pid=48232][err] [0619/094807.363831:WARNING:in_range_cast.h(38)] value -97304226 out of range
+[pid=48232][err] [0619/094807.600171:WARNING:in_range_cast.h(38)] value -97304226 out of range
+[pid=48232][err] [0619/094807.621620:WARNING:crash_report_exception_handler.cc(235)] UniversalExceptionRaise: (os/kern) failure (5)
+2025-06-19 10:14:21,866 - ERROR - 浏览器初始化失败: Target page, context or browser has been closed
+Browser logs:
+
+<launching> /Users/timon/Library/Caches/ms-playwright/chromium-1091/chrome-mac/Chromium.app/Contents/MacOS/Chromium --disable-field-trial-config --disable-background-networking --enable-features=NetworkService,NetworkServiceInProcess --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=ImprovedCookieControls,LazyFrameLoading,GlobalMediaControls,DestroyProfileOnBrowserClose,MediaRouter,DialMediaRouteProvider,AcceptCHFrame,AutoExpandDetailsElement,CertificateTransparencyComponentUpdater,AvoidUnnecessaryBeforeUnloadCheckSync,Translate,HttpsUpgrades --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --enable-automation --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --enable-use-zoom-for-dsf=false --no-sandbox --no-sandbox --disable-dev-shm-usage --disable-gpu --disable-web-security --disable-features=VizDisplayCompositor --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-renderer-backgrounding --disable-features=TranslateUI --disable-ipc-flooding-protection --no-first-run --no-default-browser-check --disable-default-apps --disable-extensions --disable-plugins --disable-images --disable-javascript --disable-features=TranslateUI --disable-features=GlobalMediaControls --disable-features=MediaRouter --disable-features=DialMediaRouteProvider --user-data-dir=/var/folders/33/mkkdmtsd3yxbmprmqbndnv7c0000gn/T/playwright_chromiumdev_profile-m72OGY --remote-debugging-pipe --no-startup-window
+<launched> pid=49797
+[pid=49797][err] [49797:259:0619/101420.703658:ERROR:policy_logger.cc(156)] :components/enterprise/browser/controller/chrome_browser_cloud_management_controller.cc(161) Cloud management controller initialization aborted as CBCM is not enabled. Please use the `--enable-chrome-browser-cloud-management` command line flag to enable it if you are not using the official Google Chrome build.
+[pid=49797][err] [0619/101421.394685:WARNING:in_range_cast.h(38)] value -97304226 out of range
+[pid=49797][err] [0619/101421.808032:WARNING:in_range_cast.h(38)] value -97304226 out of range
+[pid=49797][err] [0619/101421.850889:WARNING:crash_report_exception_handler.cc(235)] UniversalExceptionRaise: (os/kern) failure (5)
+2025-06-19 10:14:38,860 - INFO - 浏览器初始化成功
+2025-06-19 10:14:47,782 - INFO - 浏览器已关闭
+2025-06-19 10:15:29,586 - INFO - 浏览器初始化成功
+2025-06-19 10:15:29,586 - INFO - 正在搜索 OpenAI 网站，关键词: 小鸟科技
+2025-06-19 10:15:53,593 - WARNING - 在 OpenAI 未找到搜索框，尝试直接访问搜索URL
+2025-06-19 10:15:57,709 - ERROR - 搜索 OpenAI 时出错: Target page, context or browser has been closed
+2025-06-19 10:15:59,711 - INFO - 正在搜索 Anthropic 网站，关键词: 小鸟科技
+2025-06-19 10:15:59,715 - ERROR - 搜索 Anthropic 时出错: Target page, context or browser has been closed
+2025-06-19 10:16:01,717 - INFO - 正在搜索 Google AI 网站，关键词: 小鸟科技
+2025-06-19 10:16:01,720 - ERROR - 搜索 Google AI 时出错: Target page, context or browser has been closed
+2025-06-19 10:16:03,720 - INFO - 正在搜索 Microsoft AI 网站，关键词: 小鸟科技
+2025-06-19 10:16:03,723 - ERROR - 搜索 Microsoft AI 时出错: Target page, context or browser has been closed
+2025-06-19 10:16:05,724 - INFO - 正在搜索 Meta AI 网站，关键词: 小鸟科技
+2025-06-19 10:16:05,727 - ERROR - 搜索 Meta AI 时出错: Target page, context or browser has been closed
+2025-06-19 10:16:07,728 - INFO - 正在搜索 DeepMind 网站，关键词: 小鸟科技
+2025-06-19 10:16:07,731 - ERROR - 搜索 DeepMind 时出错: Target page, context or browser has been closed
+2025-06-19 10:16:09,732 - INFO - 正在搜索 Hugging Face 网站，关键词: 小鸟科技
+2025-06-19 10:16:09,734 - ERROR - 搜索 Hugging Face 时出错: Target page, context or browser has been closed
+2025-06-19 10:16:11,737 - INFO - 正在搜索 Stability AI 网站，关键词: 小鸟科技
+2025-06-19 10:16:11,740 - ERROR - 搜索 Stability AI 时出错: Target page, context or browser has been closed
+2025-06-19 10:16:13,741 - INFO - 正在搜索 Cohere 网站，关键词: 小鸟科技
+2025-06-19 10:16:13,743 - ERROR - 搜索 Cohere 时出错: Target page, context or browser has been closed
+2025-06-19 10:16:15,744 - INFO - 正在搜索 Claude 网站，关键词: 小鸟科技
+2025-06-19 10:16:15,748 - ERROR - 搜索 Claude 时出错: Target page, context or browser has been closed
+2025-06-19 10:16:17,750 - INFO - 正在搜索 Perplexity 网站，关键词: 小鸟科技
+2025-06-19 10:16:17,753 - ERROR - 搜索 Perplexity 时出错: Target page, context or browser has been closed
+2025-06-19 10:16:19,754 - INFO - 正在搜索 You.com 网站，关键词: 小鸟科技
+2025-06-19 10:16:19,756 - ERROR - 搜索 You.com 时出错: Target page, context or browser has been closed
+2025-06-19 10:16:21,757 - INFO - 正在搜索 Bard 网站，关键词: 小鸟科技
+2025-06-19 10:16:21,762 - ERROR - 搜索 Bard 时出错: Target page, context or browser has been closed
+2025-06-19 10:16:23,763 - INFO - 正在搜索 ChatGPT 网站，关键词: 小鸟科技
+2025-06-19 10:16:23,766 - ERROR - 搜索 ChatGPT 时出错: Target page, context or browser has been closed
+2025-06-19 10:16:25,768 - INFO - 正在搜索 Bing Chat 网站，关键词: 小鸟科技
+2025-06-19 10:16:25,773 - ERROR - 搜索 Bing Chat 时出错: Target page, context or browser has been closed
+2025-06-19 10:16:27,774 - INFO - 正在搜索 Midjourney 网站，关键词: 小鸟科技
+2025-06-19 10:16:27,778 - ERROR - 搜索 Midjourney 时出错: Target page, context or browser has been closed
+2025-06-19 10:16:29,778 - INFO - 正在搜索 DALL-E 网站，关键词: 小鸟科技
+2025-06-19 10:16:29,780 - ERROR - 搜索 DALL-E 时出错: Target page, context or browser has been closed
+2025-06-19 10:16:31,782 - INFO - 正在搜索 Runway 网站，关键词: 小鸟科技
+2025-06-19 10:16:31,787 - ERROR - 搜索 Runway 时出错: Target page, context or browser has been closed
+2025-06-19 10:16:33,838 - INFO - 正在搜索 ElevenLabs 网站，关键词: 小鸟科技
+2025-06-19 10:16:33,872 - ERROR - 搜索 ElevenLabs 时出错: Target page, context or browser has been closed
+2025-06-19 10:16:35,873 - INFO - 正在搜索 Replicate 网站，关键词: 小鸟科技
+2025-06-19 10:16:35,876 - ERROR - 搜索 Replicate 时出错: Target page, context or browser has been closed
+2025-06-19 10:16:37,910 - INFO - 浏览器已关闭
