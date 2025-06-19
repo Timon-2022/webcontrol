@@ -1,0 +1,10 @@
+# OpenAI API密钥（可选，用于增强分析功能）
+OPENAI_API_KEY=your_openai_api_key_here
+
+# 其他配置选项
+# 代理设置（如果需要）
+# HTTP_PROXY=http://proxy.example.com:8080
+# HTTPS_PROXY=http://proxy.example.com:8080
+
+# 日志级别
+# LOG_LEVEL=INFO 
