@@ -1,0 +1,58 @@
+{
+  "query": "小鸡科技的最新信息，包括公司背景、业务范围、最新动态",
+  "timestamp": "2025-06-21T14:29:09.026828",
+  "success": true,
+  "content": "根据搜索结果，以下是关于“小鸡科技”相关公司的最新信息，包括公司背景、",
+  "sources_count": 30,
+  "sources_urls": [
+    {
+      "url": "http://www.w3.org/2000/svg",
+      "title": "www.w3.org/2000/svg...",
+      "method": "regex_extraction"
+    },
+    {
+      "url": "https://widget.intercom.io/widget/guh50jw4",
+      "title": "widget.intercom.io/widget/guh50jw4...",
+      "method": "regex_extraction"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&amp;display=swap",
+      "title": "fonts.googleapis.com/css2...",
+      "method": "regex_extraction"
+    },
+    {
+      "url": "https://castatic.fengkongcloud.cn/pr/v1.0.4/smcp.min.js",
+      "title": "castatic.fengkongcloud.cn/pr/v1.0.4/smcp.min.js...",
+      "method": "regex_extraction"
+    },
+    {
+      "url": "http://www.kemeworks.com/",
+      "title": "www.kemeworks.com",
+      "method": "regex_extraction"
+    },
+    {
+      "url": "http://www.xiaoji.com",
+      "title": "www.xiaoji.com",
+      "method": "regex_extraction"
+    },
+    {
+      "url": "https://fonts.googleapis.com",
+      "title": "fonts.googleapis.com",
+      "method": "regex_extraction"
+    },
+    {
+      "url": "https://lf3-data.volccdn.com/obj/data-static/log-sdk/collect/5.0/collect-rangers-v5.2.1.js",
+      "title": "lf3-data.volccdn.com/obj/data-static/log-sdk/colle...",
+      "method": "regex_extraction"
+    }
+  ],
+  "error": "",
+  "steps_completed": [
+    "访问DeepSeek",
+    "发送查询",
+    "等待回复完成",
+    "获取回复内容",
+    "查找源信息",
+    "提取URL"
+  ]
+}

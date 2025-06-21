@@ -1,0 +1,92 @@
+{
+  "analysis_time": "2025-06-21T14:16:37.801319",
+  "keyword": "小鸡科技",
+  "total_sources": 1,
+  "total_texts": 1,
+  "frequency_analysis": {
+    "keyword": "小鸡科技",
+    "keyword_count": 0,
+    "total_words": 194,
+    "keyword_frequency": 0.0,
+    "keyword_percentage": 0.0,
+    "related_words": {
+      "小鸡": 9,
+      "科技": 4
+    },
+    "top_words": {
+      "小鸡": 9,
+      "游戏": 5,
+      "外设": 5,
+      "科技": 4,
+      "品牌": 3,
+      "公司": 3,
+      "软件": 3,
+      "智能": 3,
+      "产品": 3,
+      "手柄": 3,
+      "摇杆": 3,
+      "19": 3,
+      "盖世": 2,
+      "关联": 2,
+      "最新": 2,
+      "背景": 2,
+      "业务范围": 2,
+      "GameSir": 2,
+      "广州": 2,
+      "网络科技": 2
+    },
+    "total_texts": 1
+  },
+  "sentiment_analysis": {
+    "individual_sentiments": [
+      {
+        "polarity": 0.0,
+        "subjectivity": 0.0,
+        "sentiment_label": "中性"
+      }
+    ],
+    "average_polarity": 0.0,
+    "average_subjectivity": 0.0,
+    "overall_sentiment": "中性",
+    "sentiment_distribution": {
+      "中性": 1
+    },
+    "total_texts": 1
+  },
+  "authority_analysis": {
+    "individual_scores": [
+      {
+        "website": "DeepSeek",
+        "base_score": 4.0,
+        "length_bonus": 0.648,
+        "reference_bonus": 0,
+        "total_score": 4.648
+      }
+    ],
+    "average_authority": 4.648,
+    "authority_level": "一般权威性",
+    "total_sources": 1
+  },
+  "relevance_analysis": {
+    "individual_relevance": [
+      {
+        "text_index": 0,
+        "keyword_count": 2,
+        "related_count": 19,
+        "text_length": 648,
+        "keyword_density": 0.0030864197530864196,
+        "relevance_score": 3.5493827160493825
+      }
+    ],
+    "average_relevance": 3.5493827160493825,
+    "relevance_level": "高相关性",
+    "total_texts": 1
+  },
+  "wordcloud_path": "wordcloud_小鸡科技_20250621_141634.png",
+  "summary": {
+    "keyword_frequency": "0.00%",
+    "overall_sentiment": "中性",
+    "authority_level": "一般权威性",
+    "relevance_level": "高相关性"
+  }
+}
