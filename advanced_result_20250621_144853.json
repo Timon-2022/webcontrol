@@ -1,0 +1,16 @@
+{
+  "query": "小鸡科技的最新信息，包括公司背景、业务范围、最新动态",
+  "timestamp": "2025-06-21T14:47:59.224642",
+  "success": true,
+  "sources_count": 30,
+  "article_references": [],
+  "error": "",
+  "steps": [
+    "访问DeepSeek",
+    "发送查询",
+    "等待回复完成",
+    "查找源信息",
+    "点击源链接",
+    "提取文章引用"
+  ]
+}

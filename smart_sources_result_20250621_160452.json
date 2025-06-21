@@ -1,0 +1,372 @@
+{
+  "timestamp": "2025-06-21T16:06:43.317431",
+  "query": "小鸡科技的最新信息，包括公司背景、业务范围、最新动态",
+  "total_sources": 20,
+  "attempted": 20,
+  "successful": 0,
+  "success_rate": "0.0%",
+  "results": [
+    {
+      "index": 1,
+      "text": "小鸡科技（GameSir）是广州小鸡快跑网络科技有限公司旗下的游戏外设品牌，成立于2013年，专注于游戏手柄、配件及软件的研发。其母公司成立于2010年，总部位于广州，并在深圳设有研发中心，同时在中国香港和美国洛杉矶设有全球营销中心13。",
+      "success": false,
+      "error": "no_response"
+    },
+    {
+      "index": 2,
+      "text": "小鸡科技最新动态及业务概览",
+      "success": false,
+      "error": "no_response"
+    },
+    {
+      "index": 3,
+      "text": "小鸡科技的最新信息，包括公司背景、业务范围、最新动态",
+      "success": false,
+      "error": "no_response"
+    },
+    {
+      "index": 4,
+      "text": "小鸡科技最新信息概览",
+      "success": false,
+      "error": "no_response"
+    },
+    {
+      "index": 5,
+      "text": "小鸡科技的最新信息，包括公司背景、业务范围、最新动态",
+      "success": false,
+      "error": "no_response"
+    },
+    {
+      "index": 6,
+      "text": "游戏外设：包括多平台兼容手柄（如Xbox授权手柄）、手机游戏手柄（如X5系列）、散热设备（如冰晶系列半导体散热器）等。\n\n软件研发：如PC精英软件GameSir Connect，提供手柄固件升级、按键映射等功能1。\n\n元宇宙布局：结合柔性电子皮肤和6G技术，探索沉浸式游戏体验3。",
+      "success": false,
+      "error": "no_response"
+    },
+    {
+      "index": 7,
+      "text": "小鸡科技最新动态及业务概览",
+      "success": false,
+      "error": "no_response"
+    },
+    {
+      "index": 8,
+      "text": "小鸡科技最新动态及业务概览",
+      "success": false,
+      "error": "no_response"
+    },
+    {
+      "index": 9,
+      "text": "已搜索到 30 个网页",
+      "success": false,
+      "error": "no_response"
+    },
+    {
+      "index": 10,
+      "text": "游戏外设：包括多平台兼容手柄（如Xbox授权手柄）、手机游戏手柄（如X5系列）、散热设备（如冰晶系列半导体散热器）等。",
+      "success": false,
+      "error": "no_response"
+    },
+    {
+      "index": 11,
+      "text": "此外，小鸡科技在2023年获得微软Xbox授权，推出G7 SE双霍尔手柄，成为亚马逊热销产品1。",
+      "success": false,
+      "error": "no_response"
+    },
+    {
+      "index": 12,
+      "text": "深度思考 (R1)",
+      "success": false,
+      "error": "no_response"
+    },
+    {
+      "index": 13,
+      "text": "3. 最新动态（2024-2025年）",
+      "success": false,
+      "error": "no_response"
+    },
+    {
+      "index": 14,
+      "text": "该公司以高性价比和创新设计著称，产品覆盖PC、Xbox、Switch、手机等多个平台，并与微软、迪士尼、米哈游等知名企业达成战略合作13。",
+      "success": false,
+      "error": "no_response"
+    },
+    {
+      "index": 15,
+      "text": "软件研发：如PC精英软件GameSir Connect，提供手柄固件升级、按键映射等功能1。",
+      "success": false,
+      "error": "no_response"
+    },
+    {
+      "index": 16,
+      "text": "元宇宙布局：结合柔性电子皮肤和6G技术，探索沉浸式游戏体验3。",
+      "success": false,
+      "error": "no_response"
+    },
+    {
+      "index": 17,
+      "text": "2025年2月：签约格斗世界冠军“小孩”曾卓君为全球品牌代言人，并推出“启明星2”手柄1。\n\n2025年1月：与米哈游达成战略合作，成为《绝区零》全球行业合作伙伴，并推出X5系列手机手柄1。\n\n2024年12月：推出漫威联名款手柄（灭霸、绿巨人限定版）1。\n\n2024年9月：发布GameSir Connect软件，并启动智能自动化生产线1。",
+      "success": false,
+      "error": "no_response"
+    },
+    {
+      "index": 18,
+      "text": "2024年9月：发布GameSir Connect软件，并启动智能自动化生产线1。",
+      "success": false,
+      "error": "no_response"
+    },
+    {
+      "index": 19,
+      "text": "如需更详细的产品信息或公司动态，可参考其官网或相关新闻报道13。",
+      "success": false,
+      "error": "no_response"
+    },
+    {
+      "index": 20,
+      "text": "内容由 AI 生成，请仔细甄别",
+      "success": false,
+      "error": "no_response"
+    }
+  ],
+  "sources": [
+    {
+      "index": 443,
+      "x": 731,
+      "y": 159,
+      "width": 752,
+      "height": 86,
+      "text": "小鸡科技（GameSir）是广州小鸡快跑网络科技有限公司旗下的游戏外设品牌，成立于2013年，专注于游戏手柄、配件及软件的研发。其母公司成立于2010年，总部位于广州，并在深圳设有研发中心，同时在中国香港和美国洛杉矶设有全球营销中心13。",
+      "tagName": "P",
+      "className": "ds-markdown-paragraph",
+      "score": 21,
+      "isClickable": false
+    },
+    {
+      "index": 393,
+      "x": 987,
+      "y": 10,
+      "width": 206,
+      "height": 40,
+      "text": "小鸡科技最新动态及业务概览",
+      "tagName": "DIV",
+      "className": "d8ed659a",
+      "score": 14,
+      "isClickable": true
+    },
+    {
+      "index": 411,
+      "x": 1027,
+      "y": -69,
+      "width": 456,
+      "height": 44,
+      "text": "小鸡科技的最新信息，包括公司背景、业务范围、最新动态",
+      "tagName": "DIV",
+      "className": "fbb737a4",
+      "score": 11,
+      "isClickable": false
+    },
+    {
+      "index": 440,
+      "x": 731,
+      "y": 71,
+      "width": 752,
+      "height": 27,
+      "text": "小鸡科技最新信息概览",
+      "tagName": "H3",
+      "className": "",
+      "score": 10,
+      "isClickable": false
+    },
+    {
+      "index": 410,
+      "x": 683,
+      "y": -67,
+      "width": 800,
+      "height": 78,
+      "text": "小鸡科技的最新信息，包括公司背景、业务范围、最新动态",
+      "tagName": "DIV",
+      "className": "_9663006",
+      "score": 9,
+      "isClickable": false
+    },
+    {
+      "index": 451,
+      "x": 731,
+      "y": 376,
+      "width": 752,
+      "height": 122,
+      "text": "游戏外设：包括多平台兼容手柄（如Xbox授权手柄）、手机游戏手柄（如X5系列）、散热设备（如冰晶系列半导体散热器）等。\n\n软件研发：如PC精英软件GameSir Connect，提供手柄固件升级、按键映射等功能1。\n\n元宇宙布局：结合柔性电子皮肤和6G技术，探索沉浸式游戏体验3。",
+      "tagName": "UL",
+      "className": "",
+      "score": 9,
+      "isClickable": false
+    },
+    {
+      "index": 391,
+      "x": 658,
+      "y": 10,
+      "width": 864,
+      "height": 46,
+      "text": "小鸡科技最新动态及业务概览",
+      "tagName": "DIV",
+      "className": "f8d1e4c0",
+      "score": 6,
+      "isClickable": false
+    },
+    {
+      "index": 392,
+      "x": 690,
+      "y": 10,
+      "width": 800,
+      "height": 46,
+      "text": "小鸡科技最新动态及业务概览",
+      "tagName": "DIV",
+      "className": "",
+      "score": 6,
+      "isClickable": false
+    },
+    {
+      "index": 429,
+      "x": 731,
+      "y": 27,
+      "width": 168,
+      "height": 32,
+      "text": "已搜索到 30 个网页",
+      "tagName": "DIV",
+      "className": "_58a6d71 _19db599",
+      "score": 6,
+      "isClickable": true
+    },
+    {
+      "index": 452,
+      "x": 758,
+      "y": 376,
+      "width": 725,
+      "height": 57,
+      "text": "游戏外设：包括多平台兼容手柄（如Xbox授权手柄）、手机游戏手柄（如X5系列）、散热设备（如冰晶系列半导体散热器）等。",
+      "tagName": "LI",
+      "className": "",
+      "score": 6,
+      "isClickable": false
+    },
+    {
+      "index": 482,
+      "x": 731,
+      "y": 727,
+      "width": 752,
+      "height": 29,
+      "text": "此外，小鸡科技在2023年获得微软Xbox授权，推出G7 SE双霍尔手柄，成为亚马逊热销产品1。",
+      "tagName": "P",
+      "className": "ds-markdown-paragraph",
+      "score": 6,
+      "isClickable": false
+    },
+    {
+      "index": 533,
+      "x": 695,
+      "y": 1014,
+      "width": 114,
+      "height": 28,
+      "text": "深度思考 (R1)",
+      "tagName": "DIV",
+      "className": "ds-button ds-button--primary ds-button--filled ds-button--rect ds-button--m _3172d9f",
+      "score": 6,
+      "isClickable": true
+    },
+    {
+      "index": 463,
+      "x": 731,
+      "y": 516,
+      "width": 752,
+      "height": 29,
+      "text": "3. 最新动态（2024-2025年）",
+      "tagName": "H4",
+      "className": "",
+      "score": 4,
+      "isClickable": false
+    },
+    {
+      "index": 446,
+      "x": 731,
+      "y": 258,
+      "width": 752,
+      "height": 57,
+      "text": "该公司以高性价比和创新设计著称，产品覆盖PC、Xbox、Switch、手机等多个平台，并与微软、迪士尼、米哈游等知名企业达成战略合作13。",
+      "tagName": "P",
+      "className": "ds-markdown-paragraph",
+      "score": 3,
+      "isClickable": false
+    },
+    {
+      "index": 455,
+      "x": 758,
+      "y": 437,
+      "width": 725,
+      "height": 29,
+      "text": "软件研发：如PC精英软件GameSir Connect，提供手柄固件升级、按键映射等功能1。",
+      "tagName": "LI",
+      "className": "",
+      "score": 3,
+      "isClickable": false
+    },
+    {
+      "index": 459,
+      "x": 758,
+      "y": 469,
+      "width": 725,
+      "height": 29,
+      "text": "元宇宙布局：结合柔性电子皮肤和6G技术，探索沉浸式游戏体验3。",
+      "tagName": "LI",
+      "className": "",
+      "score": 3,
+      "isClickable": false
+    },
+    {
+      "index": 465,
+      "x": 731,
+      "y": 559,
+      "width": 752,
+      "height": 155,
+      "text": "2025年2月：签约格斗世界冠军“小孩”曾卓君为全球品牌代言人，并推出“启明星2”手柄1。\n\n2025年1月：与米哈游达成战略合作，成为《绝区零》全球行业合作伙伴，并推出X5系列手机手柄1。\n\n2024年12月：推出漫威联名款手柄（灭霸、绿巨人限定版）1。\n\n2024年9月：发布GameSir Connect软件，并启动智能自动化生产线1。",
+      "tagName": "UL",
+      "className": "",
+      "score": 3,
+      "isClickable": false
+    },
+    {
+      "index": 478,
+      "x": 758,
+      "y": 685,
+      "width": 725,
+      "height": 29,
+      "text": "2024年9月：发布GameSir Connect软件，并启动智能自动化生产线1。",
+      "tagName": "LI",
+      "className": "",
+      "score": 3,
+      "isClickable": false
+    },
+    {
+      "index": 484,
+      "x": 731,
+      "y": 769,
+      "width": 752,
+      "height": 29,
+      "text": "如需更详细的产品信息或公司动态，可参考其官网或相关新闻报道13。",
+      "tagName": "P",
+      "className": "ds-markdown-paragraph",
+      "score": 3,
+      "isClickable": false
+    },
+    {
+      "index": 562,
+      "x": 1007,
+      "y": 1060,
+      "width": 150,
+      "height": 14,
+      "text": "内容由 AI 生成，请仔细甄别",
+      "tagName": "DIV",
+      "className": "_0fcaa63",
+      "score": 2,
+      "isClickable": false
+    }
+  ]
+}

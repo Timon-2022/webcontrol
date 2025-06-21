@@ -1,0 +1,9 @@
+2025/06/21-15:30:28.699 168e063 Reusing MANIFEST /Users/timon/Documents/devnpmcursor/script/deepseek_user_data/Default/Local Storage/leveldb/MANIFEST-000001
+2025/06/21-15:30:28.704 168e063 Recovering log #4
+2025/06/21-15:30:28.705 168e063 Reusing old log /Users/timon/Documents/devnpmcursor/script/deepseek_user_data/Default/Local Storage/leveldb/000004.log 
+2025/06/21-15:31:28.710 168e066 Level-0 table #7: started
+2025/06/21-15:31:28.720 168e066 Level-0 table #7: 22747 bytes OK
+2025/06/21-15:31:28.725 168e066 Delete type=0 #4
+2025/06/21-15:32:23.007 168e066 Level-0 table #9: started
+2025/06/21-15:32:23.017 168e066 Level-0 table #9: 88301 bytes OK
+2025/06/21-15:32:23.029 168e066 Delete type=0 #6

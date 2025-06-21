@@ -1,0 +1,33 @@
+{
+  "timestamp": "2025-06-21T15:03:49.616312",
+  "query": "小鸡科技的最新信息，包括公司背景、业务范围、最新动态",
+  "iframes_count": 1,
+  "iframe_details": [
+    {
+      "index": 1,
+      "attributes": {
+        "src": null,
+        "width": null,
+        "height": null,
+        "name": null,
+        "id": "intercom-frame",
+        "class": null
+      },
+      "content_accessible": true,
+      "content_details": {
+        "url": "about:blank",
+        "title": "",
+        "html_length": 313,
+        "html_preview": "<html lang=\"en\"><head>\n        \n      <script type=\"text/javascript\" charset=\"utf-8\" src=\"https://js.intercomcdn.com/frame-modern.9944bafb.js\"></script><script type=\"text/javascript\" charset=\"utf-8\" src=\"https://js.intercomcdn.com/vendor-modern.f908a739.js\"></script></head>\n      <body>\n      \n    </body></html>",
+        "total_elements": 5,
+        "total_links": 0,
+        "href_links": 0,
+        "body_text_length": 0,
+        "body_text_preview": "",
+        "script_count": 2,
+        "error": "Frame.query_selector_all: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-*]' is not a valid selector.\n    at query (<anonymous>:4927:41)\n    at <anonymous>:4937:7\n    at SelectorEvaluatorImpl._cached (<anonymous>:4714:20)\n    at SelectorEvaluatorImpl._queryCSS (<anonymous>:4924:17)\n    at SelectorEvaluatorImpl._querySimple (<anonymous>:4804:19)\n    at <anonymous>:4752:29\n    at SelectorEvaluatorImpl._cached (<anonymous>:4714:20)\n    at SelectorEvaluatorImpl.query (<anonymous>:4745:19)\n    at Object.query (<anonymous>:4959:44)\n    at <anonymous>:4917:21"
+      },
+      "error": null
+    }
+  ]
+}

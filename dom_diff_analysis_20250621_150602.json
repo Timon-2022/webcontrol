@@ -1,0 +1,32 @@
+{
+  "timestamp": "2025-06-21T15:06:03.003487",
+  "query": "小鸡科技的最新信息，包括公司背景、业务范围、最新动态",
+  "before_click": {
+    "total_elements": 548,
+    "links": [],
+    "visible_elements": 505,
+    "hidden_elements": 43,
+    "modals": [],
+    "panels": [],
+    "overlays": []
+  },
+  "after_click": {
+    "total_elements": 858,
+    "links": [],
+    "visible_elements": 808,
+    "hidden_elements": 50,
+    "modals": [],
+    "panels": [],
+    "overlays": [],
+    "new_content": []
+  },
+  "differences": {
+    "element_count_change": 310,
+    "link_count_change": 0,
+    "visible_element_change": 303,
+    "hidden_element_change": 7,
+    "new_links": [],
+    "new_modals": [],
+    "new_panels": []
+  }
+}

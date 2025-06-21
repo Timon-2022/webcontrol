@@ -1,0 +1,36 @@
+{
+  "timestamp": "2025-06-21T15:08:25.290436",
+  "query": "小鸡科技的最新信息，包括公司背景、业务范围、最新动态",
+  "total_urls_found": 4,
+  "global_urls": 0,
+  "script_urls": 0,
+  "data_urls": 0,
+  "storage_urls": 0,
+  "html_urls": 4,
+  "sorted_urls": [
+    {
+      "source": "HTML content",
+      "url": "https://fonts.gstatic.com",
+      "context": "Found in page HTML",
+      "score": 0
+    },
+    {
+      "source": "HTML content",
+      "url": "http://www.w3.org/2000/svg",
+      "context": "Found in page HTML",
+      "score": 0
+    },
+    {
+      "source": "HTML content",
+      "url": "http://www.w3.org/1999/xlink",
+      "context": "Found in page HTML",
+      "score": 0
+    },
+    {
+      "source": "HTML content",
+      "url": "http://www.kemeworks.com/",
+      "context": "Found in page HTML",
+      "score": 0
+    }
+  ]
+}
