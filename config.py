@@ -151,6 +151,7 @@ SEARCH_CONFIG = {
     "max_results_per_site": 10,  # 每个网站最多获取的结果数
     "wait_time": 3,  # 页面加载等待时间（秒）
     "timeout": 30,  # 超时时间（秒）
+    "retry_count": 3,  # 重试次数
     "headless": False,  # 是否无头模式
     "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
     "chat_wait_time": 10,  # 聊天回复等待时间（秒）

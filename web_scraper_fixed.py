@@ -1,23 +1,30 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+AI网站搜索爬虫 - 修复版本
+"""
+
 import asyncio
 import json
-import os
-import time
-from datetime import datetime
-from typing import Dict, List, Optional
 import logging
+import os
+from datetime import datetime
+from typing import Dict, List
+from urllib.parse import urljoin, urlparse
 
-from playwright.async_api import async_playwright, Browser, Page
+from playwright.async_api import async_playwright
 from bs4 import BeautifulSoup
 import requests
 
 from config import AI_WEBSITES, SEARCH_CONFIG, DATA_CONFIG
 
-# 设置日志
+# 配置日志
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler(DATA_CONFIG['logs_file']),
+        logging.FileHandler(f'{DATA_CONFIG["output_dir"]}/{DATA_CONFIG["logs_file"]}', encoding='utf-8'),
         logging.StreamHandler()
     ]
 )
@@ -25,54 +32,39 @@ logger = logging.getLogger(__name__)
 
 class WebScraper:
     def __init__(self):
-        self.browser: Optional[Browser] = None
-        self.page: Optional[Page] = None
-        self.results = []
+        self.playwright = None
+        self.browser = None
+        self.page = None
         
     async def init_browser(self):
         """初始化浏览器"""
         try:
             self.playwright = await async_playwright().start()
             
-            # 使用更简单的启动参数
-            browser_args = [
-                '--no-sandbox',
-                '--disable-dev-shm-usage',
-                '--disable-gpu',
-                '--no-first-run',
-                '--no-default-browser-check',
-                '--disable-default-apps',
-                '--disable-extensions',
-                '--disable-plugins',
-            ]
-            
+            # 启动浏览器
             self.browser = await self.playwright.chromium.launch(
-                headless=True,  # 改为无头模式，避免GUI问题
-                args=browser_args,
-                timeout=60000,
+                headless=True,  # 改为无头模式
+                args=[
+                    '--no-sandbox',
+                    '--disable-dev-shm-usage',
+                    '--disable-blink-features=AutomationControlled',
+                    '--disable-web-security'
+                ]
             )
             
-            # 创建页面上下文
+            # 创建页面
             context = await self.browser.new_context(
-                user_agent=SEARCH_CONFIG['user_agent'],
-                viewport={'width': 1280, 'height': 720},
-                ignore_https_errors=True,
+                user_agent=SEARCH_CONFIG['user_agent']
             )
-            
             self.page = await context.new_page()
-            
-            # 设置页面超时
-            self.page.set_default_timeout(SEARCH_CONFIG['timeout'] * 1000)
             
             logger.info("浏览器初始化成功")
             return True
             
         except Exception as e:
             logger.error(f"浏览器初始化失败: {e}")
-            if hasattr(self, 'playwright'):
-                await self.playwright.stop()
             return False
-        
+    
     async def close_browser(self):
         """关闭浏览器"""
         try:
@@ -80,114 +72,75 @@ class WebScraper:
                 await self.page.close()
             if self.browser:
                 await self.browser.close()
-            if hasattr(self, 'playwright'):
+            if self.playwright:
                 await self.playwright.stop()
             logger.info("浏览器已关闭")
         except Exception as e:
             logger.error(f"关闭浏览器时出错: {e}")
-            
+    
     async def search_website(self, website: Dict, query: str) -> List[Dict]:
         """在指定网站搜索关键词"""
-        results = []
-        try:
-            logger.info(f"正在搜索 {website['name']} 网站，关键词: {query}")
-            
-            # 确保page已初始化
-            if not self.page:
-                logger.error("页面未初始化")
-                return results
-            
-            # 访问网站主页
-            await self.page.goto(website['url'], timeout=SEARCH_CONFIG['timeout'] * 1000)
-            await self.page.wait_for_timeout(SEARCH_CONFIG['wait_time'] * 1000)
-            
-            # 检查是否为聊天形式的网站
-            if website.get('is_chat', False):
-                results = await self._chat_search(website, query)
-            else:
-                results = await self._normal_search(website, query)
-            
-            logger.info(f"从 {website['name']} 获取到 {len(results)} 个结果")
-            
-        except Exception as e:
-            logger.error(f"搜索 {website['name']} 时出错: {e}")
-            
-        return results
+        logger.info(f"开始搜索 {website['name']}: {query}")
+        
+        # 检查是否是聊天形式
+        if website.get('is_chat', False):
+            return await self._chat_search(website, query)
+        else:
+            return await self._normal_search(website, query)
     
     async def _chat_search(self, website: Dict, query: str) -> List[Dict]:
-        """聊天形式的搜索"""
+        """聊天形式搜索"""
         results = []
         try:
-            # 等待聊天输入框出现
-            chat_input = None
+            # 访问网站
+            await self.page.goto(website['url'], timeout=SEARCH_CONFIG['timeout'] * 1000)
+            await self.page.wait_for_timeout(3000)
+            
+            # 查找输入框
+            input_element = None
             for selector in website['search_selector'].split(', '):
                 try:
-                    chat_input = await self.page.wait_for_selector(selector.strip(), timeout=10000)
-                    if chat_input:
+                    input_element = await self.page.wait_for_selector(selector.strip(), timeout=5000)
+                    if input_element:
                         break
                 except:
                     continue
             
-            if not chat_input:
-                logger.warning(f"在 {website['name']} 未找到聊天输入框")
-                return results
-            
-            # 构造聊天提示
-            chat_prompt = website.get('chat_prompt', '请回答关于以下关键词的问题：{query}').format(query=query)
-            
-            # 输入聊天内容
-            await chat_input.fill(chat_prompt)
-            await self.page.wait_for_timeout(1000)
-            
-            # 发送消息（通常是按Enter键）
-            await chat_input.press('Enter')
-            
-            # 等待回复
-            logger.info(f"等待 {website['name']} 回复...")
-            await self.page.wait_for_timeout(SEARCH_CONFIG['chat_wait_time'] * 1000)
-            
-            # 尝试多次等待回复
-            for attempt in range(SEARCH_CONFIG['max_chat_attempts']):
-                try:
-                    # 查找回复内容
-                    response_selectors = website['results_selector'].split(', ')
-                    for selector in response_selectors:
-                        try:
-                            response_elements = await self.page.query_selector_all(selector.strip())
-                            if response_elements:
-                                for i, element in enumerate(response_elements):
-                                    try:
-                                        # 获取回复文本
-                                        response_text = await element.inner_text()
-                                        if response_text and len(response_text.strip()) > 10:
-                                            result = {
-                                                'website': website['name'],
-                                                'website_url': website['url'],
-                                                'query': query,
-                                                'title': f"{website['name']} 回复",
-                                                'link': website['url'],
-                                                'content': response_text.strip(),
-                                                'image': "",
-                                                'timestamp': datetime.now().isoformat(),
-                                                'rank': i + 1,
-                                                'type': 'chat_response'
-                                            }
-                                            results.append(result)
-                                            logger.info(f"获取到 {website['name']} 回复: {response_text[:50]}...")
-                                break
-                        except Exception as e:
-                            logger.debug(f"选择器 {selector} 失败: {e}")
-                            continue
-                    
-                    if results:
-                        break
-                    else:
-                        # 如果没找到回复，再等一下
-                        await self.page.wait_for_timeout(3000)
-                        
-                except Exception as e:
-                    logger.debug(f"第 {attempt + 1} 次尝试获取回复失败: {e}")
-                    await self.page.wait_for_timeout(2000)
+            if input_element:
+                # 输入聊天内容
+                chat_prompt = website.get('chat_prompt', '{query}').format(query=query)
+                await input_element.fill(chat_prompt)
+                await input_element.press('Enter')
+                
+                # 等待回复
+                await self.page.wait_for_timeout(SEARCH_CONFIG['chat_wait_time'] * 1000)
+                
+                # 获取回复
+                for selector in website['results_selector'].split(', '):
+                    try:
+                        elements = await self.page.query_selector_all(selector.strip())
+                        if elements:
+                            for i, element in enumerate(elements[-3:]):  # 获取最后3个回复
+                                text = await element.text_content()
+                                if text and len(text.strip()) > 20:
+                                    result = {
+                                        'website': website['name'],
+                                        'website_url': website['url'],
+                                        'query': query,
+                                        'title': f"{website['name']} 回复",
+                                        'link': website['url'],
+                                        'content': text.strip(),
+                                        'image': "",
+                                        'timestamp': datetime.now().isoformat(),
+                                        'rank': i + 1,
+                                        'type': 'chat_response'
+                                    }
+                                    results.append(result)
+                                    logger.info(f"获取到 {website['name']} 回复: {text[:50]}...")
+                            break
+                    except Exception as e:
+                        logger.debug(f"选择器 {selector} 失败: {e}")
+                        continue
             
             if not results:
                 logger.warning(f"未能从 {website['name']} 获取到回复")
@@ -205,6 +158,9 @@ class WebScraper:
             search_input = None
             for selector in website['search_selector'].split(', '):
                 try:
+                    await self.page.goto(website['url'], timeout=SEARCH_CONFIG['timeout'] * 1000)
+                    await self.page.wait_for_timeout(2000)
+                    
                     search_input = await self.page.wait_for_selector(selector.strip(), timeout=5000)
                     if search_input:
                         break
@@ -218,9 +174,13 @@ class WebScraper:
                 await self.page.wait_for_timeout(SEARCH_CONFIG['wait_time'] * 1000)
             else:
                 # 直接访问搜索URL
-                search_url = website['search_url'].format(query=query)
-                await self.page.goto(search_url, timeout=SEARCH_CONFIG['timeout'] * 1000)
-                await self.page.wait_for_timeout(SEARCH_CONFIG['wait_time'] * 1000)
+                try:
+                    search_url = website['search_url'].format(query=query)
+                    await self.page.goto(search_url, timeout=SEARCH_CONFIG['timeout'] * 1000)
+                    await self.page.wait_for_timeout(SEARCH_CONFIG['wait_time'] * 1000)
+                except:
+                    logger.warning(f"无法访问 {website['name']} 的搜索URL")
+                    return results
             
             # 获取页面内容
             page_content = await self.page.content()
@@ -233,19 +193,19 @@ class WebScraper:
                 try:
                     # 提取标题
                     title = ""
-                    title_elem = element.find(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'a', '.title'])
+                    title_elem = element.find(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'a'])
                     if title_elem:
                         title = title_elem.get_text(strip=True)
                     
                     # 提取链接
                     link = ""
                     link_elem = element.find('a')
-                    if link_elem and hasattr(link_elem, 'get'):
+                    if link_elem and link_elem.get('href'):
                         href = link_elem.get('href')
-                        if href and isinstance(href, str):
+                        if href.startswith('/'):
+                            link = website['url'].rstrip('/') + href
+                        elif href.startswith('http'):
                             link = href
-                            if link.startswith('/'):
-                                link = website['url'].rstrip('/') + link
                     
                     # 提取内容摘要
                     content = element.get_text(strip=True)
@@ -255,30 +215,30 @@ class WebScraper:
                     # 提取图片
                     image = ""
                     img_elem = element.find('img')
-                    if img_elem and hasattr(img_elem, 'get'):
+                    if img_elem and img_elem.get('src'):
                         src = img_elem.get('src')
-                        if src and isinstance(src, str):
+                        if src.startswith('/'):
+                            image = website['url'].rstrip('/') + src
+                        elif src.startswith('http'):
                             image = src
-                            if image.startswith('/'):
-                                image = website['url'].rstrip('/') + image
                     
-                    result = {
-                        'website': website['name'],
-                        'website_url': website['url'],
-                        'query': query,
-                        'title': title,
-                        'link': link,
-                        'content': content,
-                        'image': image,
-                        'timestamp': datetime.now().isoformat(),
-                        'rank': i + 1,
-                        'type': 'search_result'
-                    }
-                    
-                    results.append(result)
+                    if title or content:  # 只有当有标题或内容时才添加结果
+                        result = {
+                            'website': website['name'],
+                            'website_url': website['url'],
+                            'query': query,
+                            'title': title,
+                            'link': link,
+                            'content': content,
+                            'image': image,
+                            'timestamp': datetime.now().isoformat(),
+                            'rank': i + 1,
+                            'type': 'search_result'
+                        }
+                        results.append(result)
                     
                 except Exception as e:
-                    logger.error(f"提取搜索结果时出错: {e}")
+                    logger.debug(f"提取搜索结果时出错: {e}")
                     continue
                     
         except Exception as e:
@@ -298,8 +258,10 @@ class WebScraper:
             
             for website in AI_WEBSITES:
                 try:
+                    logger.info(f"正在搜索 {website['name']}...")
                     results = await self.search_website(website, query)
                     all_results.extend(results)
+                    logger.info(f"从 {website['name']} 获取到 {len(results)} 个结果")
                     
                     # 添加延迟避免被反爬
                     await asyncio.sleep(2)

@@ -1,4 +1,4 @@
-playwright==1.40.0
+playwright==1.52.0
 requests==2.31.0
 beautifulsoup4==4.12.2
 pandas==2.1.4
@@ -7,4 +7,8 @@ python-dotenv==1.0.0
 selenium==4.15.2
 lxml==4.9.3
 nltk==3.8.1
-textblob==0.17.1 
+textblob==0.17.1
+jieba==0.42.1
+wordcloud==1.9.2
+matplotlib==3.8.2
+numpy==1.24.3 

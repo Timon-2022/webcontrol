@@ -174,7 +174,7 @@ class WebScraper:
                                             }
                                             results.append(result)
                                             logger.info(f"获取到 {website['name']} 回复: {response_text[:50]}...")
-                                break
+                                            break
                         except Exception as e:
                             logger.debug(f"选择器 {selector} 失败: {e}")
                             continue

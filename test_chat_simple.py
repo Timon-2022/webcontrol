@@ -1,81 +1,62 @@
 #!/usr/bin/env python3
-import asyncio
-from playwright.async_api import async_playwright
+# -*- coding: utf-8 -*-
 
-async def test_chat():
-    print("=== 聊天搜索测试 ===")
+"""
+简单的聊天搜索测试
+"""
+
+import asyncio
+import json
+from web_scraper_fixed import WebScraper
+
+async def test_search():
+    """测试搜索功能"""
+    scraper = WebScraper()
+    
+    # 测试关键词
+    query = "人工智能"
+    
+    print(f"🔍 开始测试搜索功能，关键词: {query}")
     
     try:
-        playwright = await async_playwright().start()
+        # 测试前3个网站
+        from config import AI_WEBSITES
+        test_websites = AI_WEBSITES[:3]  # 只测试前3个网站
         
-        # 使用更简单的启动参数
-        browser = await playwright.chromium.launch(
-            headless=True,
-            args=[
-                '--no-sandbox',
-                '--disable-dev-shm-usage',
-                '--disable-gpu',
-                '--no-first-run',
-                '--no-default-browser-check',
-                '--disable-default-apps',
-                '--disable-extensions',
-                '--disable-plugins',
-            ]
-        )
+        if not await scraper.init_browser():
+            print("❌ 浏览器初始化失败")
+            return
         
-        context = await browser.new_context(
-            user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            viewport={'width': 1280, 'height': 720},
-            ignore_https_errors=True,
-        )
+        all_results = []
         
-        page = await context.new_page()
-        page.set_default_timeout(30000)
+        for website in test_websites:
+            print(f"🌐 正在测试 {website['name']}...")
+            try:
+                results = await scraper.search_website(website, query)
+                all_results.extend(results)
+                print(f"✅ {website['name']} 完成，获取 {len(results)} 个结果")
+            except Exception as e:
+                print(f"❌ {website['name']} 失败: {e}")
         
-        # 测试访问ChatGPT
-        print("正在访问 ChatGPT...")
-        await page.goto("https://chat.openai.com", timeout=30000)
-        await page.wait_for_timeout(3000)
+        await scraper.close_browser()
         
-        # 检查页面标题
-        title = await page.title()
-        print(f"页面标题: {title}")
-        
-        # 保存页面内容用于调试
-        content = await page.content()
-        with open("debug_chatgpt.html", "w", encoding="utf-8") as f:
-            f.write(content)
-        print("✓ 页面内容已保存到 debug_chatgpt.html")
-        
-        # 查找聊天输入框
-        try:
-            chat_input = await page.wait_for_selector("textarea", timeout=10000)
-            if chat_input:
-                print("✓ 找到聊天输入框")
-                
-                # 输入测试消息
-                await chat_input.fill("请告诉我关于小鸟科技的信息")
-                await page.wait_for_timeout(1000)
-                
-                # 发送消息
-                await chat_input.press('Enter')
-                print("✓ 已发送消息")
-                
-                # 等待回复
-                await page.wait_for_timeout(10000)
-                print("✓ 等待回复完成")
-                
-            else:
-                print("✗ 未找到聊天输入框")
-        except Exception as e:
-            print(f"✗ 查找输入框失败: {e}")
-        
-        await context.close()
-        await browser.close()
-        await playwright.stop()
-        
+        # 保存结果
+        if all_results:
+            filename = scraper.save_results(all_results, query)
+            print(f"\n📊 测试完成！")
+            print(f"📁 总共获取 {len(all_results)} 个结果")
+            print(f"💾 结果已保存到: {filename}")
+            
+            # 显示前几个结果
+            print(f"\n📝 前3个结果预览:")
+            for i, result in enumerate(all_results[:3]):
+                print(f"  {i+1}. {result['website']}: {result['title'][:50]}...")
+        else:
+            print("❌ 未获取到任何结果")
+            
     except Exception as e:
-        print(f"测试失败: {e}")
+        print(f"❌ 测试过程中出错: {e}")
+        await scraper.close_browser()
 
 if __name__ == "__main__":
-    asyncio.run(test_chat()) 
+    asyncio.run(test_search()) 
